@@ -130,6 +130,7 @@ pub use self::{
         StackLimits,
         TypedResumableCall,
         TypedResumableInvocation,
+        FuelCosts,
     },
     error::Error,
     externref::ExternRef,
