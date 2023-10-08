@@ -25,7 +25,7 @@ use self::regmach::bytecode::RegisterSpan;
 pub use self::{
     bytecode::DropKeep,
     code_map::CompiledFunc,
-    config::{Config, EngineBackend, FuelConsumptionMode},
+    config::{Config, EngineBackend, FuelConsumptionMode, FuelCosts},
     func_builder::{FuncTranslatorAllocations, Instr, RelativeDepth, TranslationError},
     resumable::{ResumableCall, ResumableInvocation, TypedResumableCall, TypedResumableInvocation},
     stack::StackLimits,

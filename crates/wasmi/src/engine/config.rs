@@ -125,7 +125,7 @@ pub struct FuelCosts {
     /// # Note
     ///
     /// If this is zero then processing [`DropKeep`] costs nothing.
-    branch_kept_per_fuel: u64,
+    pub branch_kept_per_fuel: u64,
     /// Determines how many function locals consume one fuel per function call.
     ///
     /// # Note
@@ -133,19 +133,19 @@ pub struct FuelCosts {
     /// - This is also applied to all function parameters since
     ///   they are translated to local variable slots.
     /// - If this is zero then processing function locals costs nothing.
-    func_locals_per_fuel: u64,
+    pub func_locals_per_fuel: u64,
     /// How many memory bytes can be processed per fuel in a `bulk-memory` instruction.
     ///
     /// # Note
     ///
     /// If this is zero then processing memory bytes costs nothing.
-    memory_bytes_per_fuel: u64,
+    pub memory_bytes_per_fuel: u64,
     /// How many table elements can be processed per fuel in a `bulk-table` instruction.
     ///
     /// # Note
     ///
     /// If this is zero then processing table elements costs nothing.
-    table_elements_per_fuel: u64,
+    pub table_elements_per_fuel: u64,
 }
 
 impl FuelCosts {
@@ -395,6 +395,12 @@ impl Config {
     /// [`Engine`]: crate::Engine
     pub(crate) fn get_consume_fuel(&self) -> bool {
         self.consume_fuel
+    }
+
+    /// Sets the [`FuelCosts`] for the [`Config`].
+    pub fn set_fuel_costs(&mut self, fuel_costs: FuelCosts) -> &mut Self {
+        self.fuel_costs = fuel_costs;
+        self
     }
 
     /// Returns the configured [`FuelCosts`].
